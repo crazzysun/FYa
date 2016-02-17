@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class homework2 {
-
     void run() {
         ArrayList<String> L1 = new ArrayList<String>(Arrays.asList("01", "11", "12"));
         ArrayList<String> L2 = new ArrayList<String>(Arrays.asList("120", "011", "112"));
