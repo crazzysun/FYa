@@ -4,7 +4,7 @@ public class homework3 {
     String[] tmpa = {"aba", "bad", "d", "b", "abc"};
     String[] tmpb = {"b", "ab", "ba", "dd", "c"};
     HashMap<String, String> map;
-    char[] chars = {'a', 'b', 'c', 'd'};
+    char[] chars = {'a', 'b', 'c', 'd', ' '};
     ArrayList<ArrayList<String>> ans;
     Set<String> used;
     Set<String> good;
@@ -15,11 +15,11 @@ public class homework3 {
     void run() {
         map = new HashMap<String, String>();
         ini();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                for (int k = 0; k < 4; k++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                for (int k = 0; k < 5; k++) {
                     String s = chars[i] + "" + chars[j] + "" + chars[k];
-                    rec(s, new ArrayList<String>());
+                    rec(s.trim(), new ArrayList<String>());
                 }
             }
         }
@@ -31,7 +31,7 @@ public class homework3 {
             for (String s : an) {
                 System.out.print(s + " -> ");
             }
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
@@ -65,10 +65,13 @@ public class homework3 {
             for (int j = i + 1; j <= s.length(); j++) {
                 if (map.containsKey(s.substring(i, j))) {
                     String tmp = s.substring(0, i) + map.get(s.substring(i, j)) + s.substring(j);
-                    ArrayList<String> tmpArr = (ArrayList<String>) strings.clone();
+                    ArrayList<String> tmpArr = clon(strings);
                     rec(tmp, tmpArr);
+
                 }
+                //if(good.contains(s)) return;
             }
+            //if(good.contains(s)) return;
         }
     }
 
@@ -81,6 +84,14 @@ public class homework3 {
         }
 
         return ans;
+    }
+
+    ArrayList<String> clon(ArrayList<String> a) {
+        ArrayList<String> res = new ArrayList<String>();
+        for (String s : a) {
+            res.add(s);
+        }
+        return res;
     }
 
     void ini() {
